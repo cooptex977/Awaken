@@ -1,0 +1,23 @@
+List of Sprites I Need (in spritesheet form for those with animations):
+- player
+	* normal player (like the one I have but with a better walk cycle)
+	* ranged version of the player (gun, red/grey motif)
+- Enemies
+	* All up to you
+	* Maybe some lizards
+	* crabs
+	* of course, slimes
+		& slimes need to jump for movement rather than just walking (sliding?)
+	* Bosses
+		& also up to you
+		& haven't decided on any yet
+- pickups (put these on one spritesheet)
+	* health pickups
+	* exp pickups
+	* Items
+		& I have literally no clue how these are gonna work yet
+		& whatever you want
+- background
+	* Stage 1 for now
+- tiles
+	* Platforms, ground, etc.

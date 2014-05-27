@@ -1,0 +1,19 @@
+#pragma once
+
+//includes
+#include "SFML\Graphics.hpp"
+#include <stdio.h>
+#include <Windows.h>
+#include <string>
+#include <vector>
+#include <cmath>
+#include <stdlib.h>
+#include <ctime>
+#include <sstream>
+#include <fstream>
+#include <cctype>
+
+//public types
+enum Direction { IdleRight, IdleLeft, Left, Right };
+
+#endif
