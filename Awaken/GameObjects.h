@@ -30,7 +30,7 @@ public:
 	sf::Vector2f vel;
 	sf::Vector2i source = sf::Vector2i(1, IdleRight);
 	sf::Clock clock;
-	bool canJump, isTouchingGround;
+	bool isTouchingGround;
 	float frameCounter = 0.0f, switchFrame = 100.0f, frameSpeed = 500.0f, movespeed, jumpspeed, gravity;
 };
 

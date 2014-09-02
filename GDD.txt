@@ -1,0 +1,33 @@
+Awaken Notes
+•	Plot
+	o	Wake up in cryogenic chamber
+	o	1000 years after you were put to sleep for serious crime
+	o	Escape from chamber, world is devoid of people
+		-	Hideous mutations
+		-	Monsters
+	o	Try to survive and escape Earth
+•	Mechanics
+	o	Platformer 
+	o	Side-scroll (both ways)
+	o	Melee (at least for first character)
+	o	Q, W, E, R for abilities 
+	o	Health bar
+	o	Resource bar
+		-	Energy overflow
+		-	Think Super bar
+		-	Fills as you kill things, slowly over time
+		-	Ultimate (R), requires all your Energy
+	o	Increase difficulty with time
+	o	Level based
+		-	Stats increase with level
+	o	Items change player behavior
+		-	Speed up, ability modifiers, every fourth attack launches a beam, that kind of thing
+	o	Items stackable
+	o	Infinite world?
+•	Work
+	o	Programming:
+		-	Me
+	o	Art:
+		-	Rosie
+	o	Music:
+		-	Charlie 

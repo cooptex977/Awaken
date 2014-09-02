@@ -2,6 +2,10 @@
 #include "GameObjects.h"
 void khandle(Player* player)
 {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+	{
+		exit(0);
+	}
 	player->movespeed = 3.0f;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
@@ -59,10 +63,6 @@ void khandle(Player* player)
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
 	{
 		//ability 4
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-	{
-		exit(0);
 	}
 	else
 	{

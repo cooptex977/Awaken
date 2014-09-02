@@ -79,6 +79,8 @@ void Game::Init()
 	tiles.push_back(new Tile(sf::Vector2f((SCREEN_WIDTH / 2) - 32, (SCREEN_HEIGHT / 2) + 32)));
 	tiles.push_back(new Tile(sf::Vector2f((SCREEN_WIDTH / 2), (SCREEN_HEIGHT / 2) + 32)));
 	tiles.push_back(new Tile(sf::Vector2f((SCREEN_WIDTH / 2) + 32, SCREEN_HEIGHT / 2)));
+	tiles.push_back(new Tile(sf::Vector2f((SCREEN_WIDTH / 2) - 64, SCREEN_HEIGHT / 2)));
+	tiles.push_back(new Tile(sf::Vector2f((SCREEN_WIDTH / 2) - 64, (SCREEN_HEIGHT / 2) - 128)));
 	int count = 0;
 }
 
@@ -101,7 +103,10 @@ void Game::Update()
 				player->sprite.setPosition(player->sprite.getPosition().x, tile->sprite.getPosition().y - tile->sprite.getGlobalBounds().height);
 			//left
 			else if (player->sprite.getPosition().x + player->sprite.getGlobalBounds().width - 8 > tile->sprite.getPosition().x)
-				player->sprite.setPosition(tile->sprite.getPosition().x - (tile->sprite.getGlobalBounds().width - 8), player->sprite.getPosition().y); 
+				player->sprite.setPosition(tile->sprite.getPosition().x - (tile->sprite.getGlobalBounds().width - 8), player->sprite.getPosition().y);
+			//right
+			else
+				player->sprite.setPosition(tile->sprite.getPosition().x - abs(tile->sprite.getPosition().x - player->sprite.getPosition().x), player->sprite.getPosition().y);
 		}
 	}
 }

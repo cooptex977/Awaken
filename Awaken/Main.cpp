@@ -8,7 +8,6 @@
 #pragma comment(lib, "gdi32.lib")  
 #endif
 
-
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	Game* game = new Game();
