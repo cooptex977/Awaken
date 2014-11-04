@@ -5,13 +5,6 @@ class GameObject
 {
 public:
 	sf::Texture texture;
-	sf::Sprite getSprite();
-	void setSprite(sf::Sprite newsprite);
-	virtual void move(int x, int y);
-	virtual void move(sf::Vector2f offset);
-	sf::FloatRect getGlobalBounds();
-	void setTexture(const sf::Texture &texture);
-protected:
 	sf::Sprite sprite;
 };
 
@@ -32,22 +25,13 @@ class Player : public GameObject
 {
 public:
 	sf::Sprite getCurrentSprite();
-	sf::Vector2f getPosition();
-	void Player::move(sf::Vector2f& newpos);
-	void setPosition(sf::Vector2f newpos);
-	void setPosition(int x, int y);
 	Player(sf::Vector2f position);
 	int hp, energy, lastdir = IdleRight;
 	sf::Vector2f vel;
 	sf::Vector2i source = sf::Vector2i(1, IdleRight);
 	sf::Clock clock;
-	int prevx;
-	int prevy;
 	bool isTouchingGround;
-	float frameCounter = 0.0f, switchFrame = 100.0f, frameSpeed = 500.0f;
-	const int gravity = 10;
-private:
-	sf::Vector2f pos;
+	float frameCounter = 0.0f, switchFrame = 100.0f, frameSpeed = 500.0f, movespeed, jumpspeed, gravity;
 };
 
 class Enemy : public GameObject

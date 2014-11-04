@@ -16,12 +16,10 @@ public:
 	sf::Sprite bg;
 	std::vector<Tile*> tiles;
 	sf::Font font;
-	sf::Text Text;
 	Player* player;
 	sf::View view;
 	sf::Clock clock;
 	float lastTime;
-	float dt;
 	sf::RenderWindow window; 
 	sf::Vector2f viewpos;
 };
