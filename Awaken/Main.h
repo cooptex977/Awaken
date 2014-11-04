@@ -12,6 +12,7 @@
 #include <sstream>
 #include <fstream>
 #include <cctype>
+#include <string>
 #include <memory>
 
 //public types

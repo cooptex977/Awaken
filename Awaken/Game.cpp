@@ -18,6 +18,7 @@ void Game::MainLoop()
 		//event listening
 		while (window.pollEvent(event))
 		{
+			dt = clock.restart().asSeconds();
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
@@ -25,7 +26,7 @@ void Game::MainLoop()
 		
 		Update();
 
-		viewpos = sf::Vector2f(player->sprite.getPosition().x + 10 - (800 / 2), player->sprite.getPosition().y + 10 - (600 / 2));
+		viewpos = sf::Vector2f(player->getPosition().x + 10 - (800 / 2), player->getPosition().y + 10 - (600 / 2));
 
 		if (viewpos.x < 0)
 			viewpos.x = 0;
@@ -37,9 +38,10 @@ void Game::MainLoop()
 		window.clear(sf::Color::White); //clear the window
 		window.setView(view);
 		window.draw(bg);
+		window.draw(Text);
 		for each (Tile* tile in tiles)
 		{
-			window.draw(tile->sprite);
+			window.draw(tile->getSprite());
 		}
 		window.draw(player->getCurrentSprite()); //draw to the back buffer
 		window.display(); //display the back buffer
@@ -70,7 +72,7 @@ void Game::Init()
 	if (!player->texture.loadFromFile("assets/images/player.png"))
 		MessageBox(0, L"Error: failed to load asset", L"Error", MB_ABORTRETRYIGNORE);
 	else
-		player->sprite.setTexture(player->texture);
+		player->setTexture(player->texture);
 	if (!bgtexture.loadFromFile("assets/images/bg.png"))
 		MessageBox(0, L"Error: failed to load asset", L"Error", MB_ABORTRETRYIGNORE);
 	else
@@ -82,31 +84,31 @@ void Game::Init()
 	tiles.push_back(new Tile(sf::Vector2f((SCREEN_WIDTH / 2) - 64, SCREEN_HEIGHT / 2)));
 	tiles.push_back(new Tile(sf::Vector2f((SCREEN_WIDTH / 2) - 64, (SCREEN_HEIGHT / 2) - 128)));
 	int count = 0;
+	Text.setColor(sf::Color::Black);
+	Text.setFont(font);
 }
 
 void Game::Update()
 {
+	player->setPosition(player->getPosition().x + player->vel.x * dt, player->getPosition().y + player->vel.y * dt);
 	if (player->vel.y > 100)
 		player->vel.y = 100;
-	if (!player->isTouchingGround)
-		player->vel.y += player->gravity;
-	if (player->vel != sf::Vector2f(0, 0))
-		player->sprite.move(player->vel);
 	player->isTouchingGround = false;
+	Text.setPosition(viewpos.x, viewpos.y);
+	std::string string1 = std::to_string(player->getPosition().x);
+	std::string string2 = std::to_string(player->getPosition().y);
+	Text.setString(string1 + "," + string2);
 	for each (Tile* tile in tiles)
 	{
-		if (tile->sprite.getGlobalBounds().intersects(player->sprite.getGlobalBounds()))
+		if (tile->getSprite().getGlobalBounds().intersects(player->getSprite().getGlobalBounds()))
 		{
 			player->isTouchingGround = true;
 			//top
-			if (player->sprite.getPosition().y < tile->sprite.getPosition().y)
-				player->sprite.setPosition(player->sprite.getPosition().x, tile->sprite.getPosition().y - tile->sprite.getGlobalBounds().height);
+			if (player->getSprite().getPosition().y < tile->getSprite().getPosition().y)
+				player->getSprite().setPosition(player->getSprite().getPosition().x, tile->getSprite().getPosition().y - tile->getSprite().getGlobalBounds().height);
 			//left
-			else if (player->sprite.getPosition().x + player->sprite.getGlobalBounds().width - 8 > tile->sprite.getPosition().x)
-				player->sprite.setPosition(tile->sprite.getPosition().x - (tile->sprite.getGlobalBounds().width - 8), player->sprite.getPosition().y);
-			//right
-			else
-				player->sprite.setPosition(tile->sprite.getPosition().x - abs(tile->sprite.getPosition().x - player->sprite.getPosition().x), player->sprite.getPosition().y);
+			else if (player->getSprite().getPosition().x + player->getSprite().getGlobalBounds().width - 8 > tile->getSprite().getPosition().x)
+				player->getSprite().setPosition(tile->getSprite().getPosition().x - (tile->getSprite().getGlobalBounds().width - 8), player->getSprite().getPosition().y);
 		}
 	}
 }
